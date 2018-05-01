@@ -9,7 +9,7 @@ public class Game {
         this.gameBoard = gameBoard;
     }
 
-    public void run(int generations) {
+    public void run(int generations, boolean print) {
         var changedPoints = new HashSet<Point>();
 
         var points = gameBoard.getBoard();
@@ -26,7 +26,7 @@ public class Game {
             }
             changedPoints.clear();
 
-            gameBoard.print();
+            if(print) gameBoard.print();
         }
     }
 

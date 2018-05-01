@@ -10,48 +10,8 @@ public class GameBoard {
         board = new Point[x][y];
     }
 
-    public void fillTest1() {
-        for (int x = 0; x < board.length; x++) {
-            for (int y = 0; y < board[x].length; y++) {
-                board[x][y] = new Point(x, y, false);
-            }
-        }
-        board[2][3].setLife(true);
-        board[3][4].setLife(true);
-        board[4][2].setLife(true);
-        board[4][3].setLife(true);
-        board[4][4].setLife(true);
-        print();
-    }
 
-    public void fillTest2() {
-        for (int x = 0; x < board.length; x++) {
-            for (int y = 0; y < board[x].length; y++) {
-                board[x][y] = new Point(x, y, false);
-            }
-        }
-        board[2][2].setLife(true);
-        board[2][3].setLife(true);
-        board[2][4].setLife(true);
-
-    }
-
-    public void fillTest3() {
-        for (int x = 0; x < board.length; x++) {
-            for (int y = 0; y < board[x].length; y++) {
-                board[x][y] = new Point(x, y, false);
-            }
-        }
-        board[4][2].setLife(true);
-        board[4][3].setLife(true);
-        board[4][4].setLife(true);
-
-        board[3][3].setLife(true);
-        board[3][4].setLife(true);
-        board[3][5].setLife(true);
-    }
-
-    public void fill(){
+    public void randomFill(){
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[x].length; y++) {
                 boolean value = ThreadLocalRandom.current().nextBoolean();
@@ -60,6 +20,18 @@ public class GameBoard {
                 board[x][y] = new Point(x, y, value);
             }
         }
+    }
+
+    public void emptyFill() {
+        for (int x = 0; x < board.length; x++) {
+            for (int y = 0; y < board[x].length; y++) {
+                board[x][y] = new Point(x, y, false);
+            }
+        }
+    }
+
+    public void setPoint(Point point) {
+        board[point.getX()][point.getY()].setLife(point.getLife());
     }
 
     public void print() {
